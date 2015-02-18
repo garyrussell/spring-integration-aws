@@ -80,8 +80,9 @@ public class SqsMessageHandler extends AbstractMessageHandler implements Integra
 		if (!StringUtils.hasText(queue) && this.queueExpression != null) {
 			queue = this.queueExpression.getValue(this.evaluationContext, message, String.class);
 		}
-		Assert.state(queue != null, "'queue' must not be null for sending SQS message. " +
-				"Consider configure this handler with 'queue(queueExpression)' or supply 'aws_queue' message header");
+		Assert.state(queue != null, "'queue' must not be null for sending an SQS message. " +
+				"Consider configuring this handler with a 'queue'( or 'queueExpression') or supply an " +
+				"'aws_queue' message header");
 		this.template.send(queue, message);
 	}
 

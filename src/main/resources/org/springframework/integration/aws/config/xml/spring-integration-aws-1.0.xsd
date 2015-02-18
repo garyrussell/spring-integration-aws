@@ -356,7 +356,7 @@
 		<xsd:complexType>
 			<xsd:annotation>
 				<xsd:documentation>
-					Defines an outbound SQS Channel Adapter for sending messages to the queues.
+					Defines an outbound SQS Channel Adapter for sending messages to queues.
 				</xsd:documentation>
 			</xsd:annotation>
 			<xsd:complexContent>
@@ -371,8 +371,8 @@
 							<xsd:documentation>
 								The Amazon queue name or URL.
 								Mutually exclusive with 'queue-expression'.
-								This attribute isn't mandatory and the queue can be specified in message headers with
-								'AwsHeaders.QUEUE' key.
+								This attribute isn't mandatory and the queue can be specified in message headers
+								with the 'AwsHeaders.QUEUE' header name.
 							</xsd:documentation>
 						</xsd:annotation>
 					</xsd:attribute>
@@ -380,10 +380,10 @@
 						<xsd:annotation>
 							<xsd:documentation>
 								A SpEL expression that resolves to an Amazon queue or its URL.
-								The 'requestMessage' is root object for evaluation context.
+								The 'requestMessage' is the root object for evaluation context.
 								Mutually exclusive with 'queue'.
 								This attribute isn't mandatory and the queue can be specified in message headers with
-								'AwsHeaders.QUEUE' key.
+								the 'AwsHeaders.QUEUE' header name.
 							</xsd:documentation>
 						</xsd:annotation>
 					</xsd:attribute>
@@ -497,7 +497,7 @@
 								Defines if a message must be deleted or not if the message handling throws an exception
 								By default this value is set to 'true' which means that the message is deleted to
 								avoid poison messages. If the 'error-channel' is specified and the direct error flow
-								doesn't rethrow a 'MessagingException' this attribute doesn't have effect. If this is
+								doesn't rethrow a 'MessagingException' this attribute doesn't have an effect. If this is
 								to 'false' it is a responsibility of the error flow to remove the message from
 								AmazonSQS.
 							</xsd:documentation>
